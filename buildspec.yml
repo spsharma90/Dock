@@ -23,7 +23,7 @@ phases:
       - |
         echo '[ 
           { 
-            "name": "my-docker-image", 
+            "name": "django-container", 
             "imageUri": "820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1" 
           } 
         ]' > imagedefinitions.json
