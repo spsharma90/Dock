@@ -20,7 +20,13 @@ phases:
       - docker push 820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1
 
       # Create imagedefinitions.json
-      - echo '[ { "name": "my-docker-image", "imageUri": "820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1" } ]' > imagedefinitions.json
+      - |
+        echo '[ 
+          { 
+            "name": "my-docker-image", 
+            "imageUri": "820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1" 
+          } 
+        ]' > imagedefinitions.json
 
 artifacts:
   files:
