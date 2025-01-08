@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      # Install Docker (if not pre-installed)
+      - apt-get update -y
+      - apt-get install -y docker.io
+
+      # Login to ECR
+      - aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin 820242924879.dkr.ecr.us-west-2.amazonaws.com
+
+      # Build Docker image
+      - docker build -t first-time .
+
+      # Tag Docker image with ECR repository URI
+      - docker tag first-time:latest 820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1
+
+      # Push Docker image to ECR
+      - docker push 820242924879.dkr.ecr.us-west-2.amazonaws.com/first-time:latest1
+
+artifacts:
+  files:
+    - "**/*"
